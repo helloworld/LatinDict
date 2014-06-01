@@ -1,0 +1,64 @@
+<head>
+    <title>Ecce Romani Latin Dictionary</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="login">
+            {{> loginButtons}}
+        </div>
+        {{> DictionaryPanel}}
+    </div>
+</body>
+
+<template name="DictionaryPanel">
+    <div class="dictionary-panel">
+        {{#if currentUser}} {{> CreateDictionaryItem}} {{/if}} {{>SearchDictionaryItem}} {{> DictionaryCount}}
+        <br>
+        <ul class="dictionary-list">
+            {{#each items}}
+            <li class="dictionary-item {{isDoneClass}}">
+                {{> DictionaryItem}}
+            </li>
+            {{else}}
+            <li class="dictionary-iten empty">
+                No tasks yet.
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name="DictionaryItem">
+    <div class="word">
+        <b>{{word}}</b>
+    </div>
+    <div class="definition">
+        {{definition}}
+    </div>
+</template>
+
+<template name="CreateDictionaryItem">
+    <form class="create-dictionary">
+        <h1>Admin Section ;)</h1>
+        <small>Must be logged in</small>
+        <br>
+        <br>
+        <input type="text" name="word" placeholder="Enter New Word" />
+        <input type="text" name="definition" placeholder="Enter New Definition" />
+        <input type="submit" value="Submit" class="button">
+    </form>
+</template>
+
+<template name="SearchDictionaryItem">
+    <form class="search-dictionary">
+        <input type="text" id="searchWord" placeholder="Search a Latin Word" />
+        <input type="submit" value="Submit" class="button">
+    </form>
+</template>
+
+<template name="DictionaryCount">
+    <div class="dictionary-count">
+        {{totalCount}} entries in this dictionary.
+    </div>
+</template>

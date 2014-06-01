@@ -1,0 +1,103 @@
+/* CSS declarations go done */
+ body {
+    font-size: 14pt;
+    color: #777;
+}
+.container {
+    margin: 20px auto;
+    width: 940px;
+}
+.login {
+    margin-left:auto;
+    margin-right:auto;
+    width:70%;
+}
+.dictionary-panel {
+    margin-left:auto;
+    margin-right:auto;
+    width:70%;
+}
+.create-dictionary {
+    margin-top: 15px;
+    background-color: #bdc3c7;
+    padding: 10px 5px 10px 5px;
+    border: 1px solid #cccccc;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+    border-radius: 4px;
+}
+.create-dictionary input[type="text"] {
+    width: 38%;
+    padding: 10px;
+    font-size: 18pt;
+    height: 24pt;
+    line-height: 24pt;
+}
+.search-dictionary input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    font-size: 18pt;
+    height: 24pt;
+    line-height: 24pt;
+}
+.button {
+    position: relative;
+    vertical-align: top;
+    width: 100%;
+    height: 53px;
+    padding: 10px;
+    font-size: 18pt;
+    color: #bdc3c7;
+    text-align: center;
+    background: white;
+    border: 1px solid #cccccc;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+    border-radius: 4px;
+    // border-bottom: 2px solid #7f8c8d;
+    // cursor: pointer;
+    // -webkit-box-shadow: inset 0 -2px #7f8c8d;
+    // box-shadow: inset 0 -2px #7f8c8d;
+}
+.button:active {
+    top: 1px;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.red {
+    background: #c0392b;
+}
+.yellow {
+    background: #f1c40f;
+}
+.green {
+    background: #27ae60;
+}
+.entries-count {
+    clear: both;
+    overflow: hidden;
+    margin: 20px 0px;
+    color: lighten(#777, 20%);
+}
+.dictionary-list {
+    list-style: none;
+    clear: both;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+.dictionary-item {
+    clear: both;
+    float: left;
+    padding: 10px 0px;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    .word {
+        float: left;
+        padding-left: 20px;
+    }
+    .definition {
+        float: right;
+        padding-left: 20px;
+    }
+}
