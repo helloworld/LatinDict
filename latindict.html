@@ -32,7 +32,10 @@
                 </tr>
                 {{else}}
                 <tr>
-                    <td>No definitions yet.</td>S
+                    <td>No definitions yet.</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 {{/each}}
             </tbody>
@@ -72,7 +75,7 @@
 
 <template name="SearchDictionaryItem">
     <form class="search-dictionary">
-        <input type="text" name="searchWord" placeholder="Search a Latin Word" />
+        <input type="text" id="searchWord" placeholder="Search a Latin Word" />
         <input type="submit" value="Submit" class="button">
     </form>
 </template>

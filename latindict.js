@@ -7,31 +7,34 @@ if (Meteor.isClient) {
 
     Template.DictionaryPanel.helpers({
         items: function() {
-            return Session.get("searchedWords");
+            return Session.get("searchedWords"); // return Dictionary.find({}, {
+            //     sort: {
+            //         created_at: -1
+            //     }
+            // });
 
         },
     });
 
     Template.DictionaryPanel.events({
         'keydown': function(e, tmpl) {
-            var searchWord = tmpl.find('input[name=searchWord]').value;
+            var searchWord = $('#searchWord').val().toLowerCase();
             var array = Dictionary.find({
                 word: searchWord
             }, {
                 sort: {
                     word: -1
                 }
-            });
-
+            }).fetch();
+            console.log(array);
+            array = array.length > 0 ? array : ["No results"]; //make sure the whole "No results" thing is in an object form, or just code around it
             Session.set('searchedWords', array);
 
         }
     });
 
     Template.DictionaryItem.helpers({
-        isDoneChecked: function() {
-            return this.is_done ? 'checked' : '';
-        },
+
     });
 
 
