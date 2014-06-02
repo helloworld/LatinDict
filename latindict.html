@@ -15,27 +15,44 @@
     <div class="dictionary-panel">
         {{#if currentUser}} {{> CreateDictionaryItem}} {{/if}} {{>SearchDictionaryItem}} {{> DictionaryCount}}
         <br>
-        <ul class="dictionary-list">
-            {{#each items}}
-            <li class="dictionary-item {{isDoneClass}}">
-                {{> DictionaryItem}}
-            </li>
-            {{else}}
-            <li class="dictionary-iten empty">
-                No tasks yet.
-            </li>
-            {{/each}}
-        </ul>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Word</th>
+                    <th>Gender</th>
+                    <th>Definiton</th>
+                    <th>Type</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {{#each items}}
+                <tr>
+                    {{> DictionaryItem}}
+                </tr>
+                {{else}}
+                <tr>
+                    <td>No definitions yet.</td>S
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
     </div>
 </template>
 
 <template name="DictionaryItem">
-    <div class="word">
+    <td>
         <b>{{word}}</b>
-    </div>
-    <div class="definition">
+    </td>
+    <td>
+        {{gender}}
+    </td>
+    <td>
         {{definition}}
-    </div>
+    </td>
+    <td>
+        {{type}}
+    </td>
 </template>
 
 <template name="CreateDictionaryItem">
@@ -44,15 +61,18 @@
         <small>Must be logged in</small>
         <br>
         <br>
-        <input type="text" name="word" placeholder="Enter New Word" />
-        <input type="text" name="definition" placeholder="Enter New Definition" />
+        <input type="text" class="word" name="word" placeholder="Enter New Word" />
+        <input type="text" class="word" name="definition" placeholder="Enter New Definition" />
+        <input type="text" class="details" name="gender" placeholder="Gender" />
+        <input type="text" class="details" name="type" placeholder="Type of Word" />
+
         <input type="submit" value="Submit" class="button">
     </form>
 </template>
 
 <template name="SearchDictionaryItem">
     <form class="search-dictionary">
-        <input type="text" id="searchWord" placeholder="Search a Latin Word" />
+        <input type="text" name="searchWord" placeholder="Search a Latin Word" />
         <input type="submit" value="Submit" class="button">
     </form>
 </template>

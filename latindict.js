@@ -7,14 +7,25 @@ if (Meteor.isClient) {
 
     Template.DictionaryPanel.helpers({
         items: function() {
-            var searchWord = $("#searchWord").val();
-            console.log(searchWord);
-            return Dictionary.find({}, {
+            return Session.get("searchedWords");
+
+        },
+    });
+
+    Template.DictionaryPanel.events({
+        'keydown': function(e, tmpl) {
+            var searchWord = tmpl.find('input[name=searchWord]').value;
+            var array = Dictionary.find({
+                word: searchWord
+            }, {
                 sort: {
-                    created_at: -1
+                    word: -1
                 }
             });
-        },
+
+            Session.set('searchedWords', array);
+
+        }
     });
 
     Template.DictionaryItem.helpers({
@@ -23,20 +34,21 @@ if (Meteor.isClient) {
         },
     });
 
-    Template.DictionaryItem.events({
 
-    });
 
     Template.CreateDictionaryItem.events({
         'submit form': function(e, tmpl) {
             e.preventDefault();
             var word = tmpl.find('input[name=word]').value;
             var definition = tmpl.find('input[name=definition]').value;
-
+            var type = tmpl.find('input[name=type]').value;
+            var gender = tmpl.find('input[name=gender]').value;
 
             Dictionary.insert({
                 word: word,
                 definition: definition,
+                type: type,
+                gender: gender,
                 created_at: new Date
             });
 
