@@ -14,20 +14,33 @@ if (Meteor.isClient) {
             // });
 
         },
+
+        isVerb: function() {
+            return (this.type == "verb");
+        },
     });
 
     Template.DictionaryPanel.events({
         'keydown': function(e, tmpl) {
             var searchWord = $('#searchWord').val().toLowerCase();
             var array = Dictionary.find({
-                word: searchWord
+                word: {
+                    $regex: ".*" + searchWord + ".*"
+                }
+
             }, {
                 sort: {
-                    word: -1
+                    word: 1
                 }
             }).fetch();
-            console.log(array);
-            array = array.length > 0 ? array : ["No results"]; //make sure the whole "No results" thing is in an object form, or just code around it
+            console.log(searchWord);
+            if (searchWord == "") {
+                array = Dictionary.find({}, {
+                    sort: {
+                        word: 1
+                    }
+                }).fetch();
+            }
             Session.set('searchedWords', array);
 
         }
