@@ -1,11 +1,10 @@
-/* CSS declarations go done */
- body {
+body {
     font-size: 14pt;
     color: #777;
 }
 .container {
     margin: 20px auto;
-    width: 940px;
+    width: 90%;
 }
 .login {
     margin-left:auto;
@@ -36,10 +35,10 @@
     line-height: 24pt;
 }
 .create-dictionary .word {
-    width: 94%;
+    width: 95%;
 }
 .create-dictionary .details {
-    width: 45%;
+    width: 29.5%;
 }
 .create-dictionary input[type="text"] {
     margin-top: 15px;
@@ -50,7 +49,7 @@
 }
 .search-dictionary input[type="text"] {
     margin-top: 15px;
-    width: 80%;
+    width: 97%;
     padding: 10px;
     font-size: 18pt;
     height: 24pt;
@@ -104,18 +103,81 @@
     padding: 0px;
     width: 100%;
 }
-.dictionary-item {
-    clear: both;
-    float: left;
-    padding: 10px 0px;
-    border-bottom: 1px solid #ccc;
-    width: 100%;
-    .word {
-        float: left;
-        padding-left: 20px;
+td:nth-child(3), th:nth-child(3) {
+    border-right:60px solid white;
+}
+td:nth-child(4), th:nth-child(4) {
+    border-right:60px solid white;
+}
+@media only screen and (max-width: 800px) {
+    .container {
+        margin: 20px auto;
+        width: 100%;
     }
-    .definition {
-        float: right;
-        padding-left: 20px;
+    .dictionary-panel {
+        margin-left:auto;
+        margin-right:auto;
+        width:100%;
+    }
+    .create-dictionary .word {
+        width: 90%;
+    }
+    .create-dictionary .details {
+        width: 41%;
+    }
+    .create-dictionary .last {
+        width: 90%;
+    }
+    /* Force table to not be like tables anymore */
+    #no-more-tables table, #no-more-tables thead, #no-more-tables tbody, #no-more-tables th, #no-more-tables td, #no-more-tables tr {
+        display: block;
+    }
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #no-more-tables thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    #no-more-tables tr {
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+    }
+    #no-more-tables td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align:left;
+    }
+    #no-more-tables td:nth-child(1) {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding: 10px 5px 15px 6px;
+        white-space: normal;
+        text-align:left;
+        background-color: #5bc0de;
+        color: white;
+    }
+    #no-more-tables td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align:left;
+        font-weight: bold;
+    }
+    /*
+    Label the data
+    */
+    #no-more-tables td:before {
+        content: attr(data-title);
     }
 }

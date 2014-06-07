@@ -16,40 +16,45 @@
         {{#if currentUser}} {{> CreateDictionaryItem}} {{/if}} {{>SearchDictionaryItem}} {{> DictionaryCount}}
         <br>
         <!-- Verb Table -->
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Verb</th>
-                    <th>Gender</th>
-                    <th>Definition</th>
-                    <th>Type</th>
+        <div id="no-more-tables">
+            <table class="table condensed">
+                <thead>
+                    <tr>
+                        <th>Verb</th>
+                        <th>Definition</th>
+                        <th>Type</th>
+                        <th>Gender</th>
+                        <th>Conjugation</th>
 
-                </tr>
-            </thead>
-            <tbody>
-                {{#each items}} {{#if isVerb}}
-                <tr>
-                    {{> DictionaryItem}}
-                </tr>
-                {{/if}} {{/each}} {{#each items}} {{#if isNoun}}
-                <tr>
-                    {{> DictionaryItem}}
-                </tr>
-                {{/if}} {{/each}} {{#each items}} {{#if isAdjective}}
-                <tr>
-                    {{> DictionaryItem}}
-                </tr>
-                {{/if}} {{else}}
-                <tr>
-                    <td>No matches for your seach term.</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    </tr>
+                </thead>
+                <tbody>
 
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
+                    {{#each items}} {{#if isVerb}}
+                    <tr>
+                        {{> DictionaryItem}}
+                    </tr>
+                    {{/if}} {{/each}} {{#each items}} {{#if isNoun}}
+                    <tr>
+                        {{> DictionaryItem}}
+                    </tr>
+                    {{/if}} {{/each}} {{#each items}} {{#if isAdjective}}
+                    <tr>
+                        {{> DictionaryItem}}
+                    </tr>
+                    {{/if}} {{else}}
+                    <tr>
+                        <td>No matches for your seach term.</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
 
     </div>
 </template>
@@ -58,21 +63,30 @@
     <td>
         <b>{{word}}</b>
     </td>
+    <td data-title="Definition">
+        {{definition}}
+    </td>
+    <td data-title="Type">
+        {{type}}
+    </td>
     {{#if isNoun}}
-    <td>
+    <td data-title="Gender">
         {{gender}}
     </td>
     {{else}}
-    <td>
+    <td data-title="Gender">
+        NA
+    </td>
+    {{/if}} {{#if isVerb}}
+    <td data-title="Conj">
+        {{conj}}
+    </td>
+    {{else}}
+    <td data-title="Conj">
         NA
     </td>
     {{/if}}
-    <td>
-        {{definition}}
-    </td>
-    <td>
-        {{type}}
-    </td>
+
 </template>
 
 <template name="CreateDictionaryItem">
@@ -84,7 +98,8 @@
         <input type="text" class="word" name="word" placeholder="Enter New Word" />
         <input type="text" class="word" name="definition" placeholder="Enter New Definition" />
         <input type="text" class="details" name="gender" placeholder="Gender" />
-        <input type="text" class="details" name="type" placeholder="Type of Word" />
+        <input type="text" class="details" name="conj" placeholder="Conjugation" />
+        <input type="text" class="details last" name="type" placeholder="Type of Word" />
 
         <input type="submit" value="Submit" class="button">
     </form>
@@ -92,8 +107,7 @@
 
 <template name="SearchDictionaryItem">
     <form class="search-dictionary">
-        <input type="text" id="searchWord" placeholder="Search a Latin Word" />
-        <input type="submit" value="Submit" class="button">
+        <input type="text" id="searchWord" placeholder="Search" />
     </form>
 </template>
 
