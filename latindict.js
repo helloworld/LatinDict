@@ -7,21 +7,27 @@ if (Meteor.isClient) {
 
     Template.DictionaryPanel.helpers({
         items: function() {
-            return Session.get("searchedWords"); // return Dictionary.find({}, {
+            return Session.get("searchedWords");
+            // return Dictionary.find({}, {
             //     sort: {
             //         created_at: -1
             //     }
             // });
-
         },
 
         isVerb: function() {
             return (this.type == "verb");
         },
+        isNoun: function() {
+            return (this.type == "noun");
+        },
+        isAdjective: function() {
+            return (this.type == "adjective");
+        }
     });
 
     Template.DictionaryPanel.events({
-        'keydown': function(e, tmpl) {
+        'keyup': function(e, tmpl) {
             var searchWord = $('#searchWord').val().toLowerCase();
             var array = Dictionary.find({
                 word: {
@@ -46,7 +52,19 @@ if (Meteor.isClient) {
         }
     });
 
+
+
     Template.DictionaryItem.helpers({
+
+        isVerb: function() {
+            return (this.type == "verb");
+        },
+        isNoun: function() {
+            return (this.type == "noun");
+        },
+        isAdjective: function() {
+            return (this.type == "adjective");
+        }
 
     });
 
@@ -99,4 +117,5 @@ if (Meteor.isServer) {
             return doc.user_id == userId;
         }
     });
+
 }

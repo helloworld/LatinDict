@@ -15,31 +15,42 @@
     <div class="dictionary-panel">
         {{#if currentUser}} {{> CreateDictionaryItem}} {{/if}} {{>SearchDictionaryItem}} {{> DictionaryCount}}
         <br>
+        <!-- Verb Table -->
         <table class="table">
             <thead>
                 <tr>
-                    <th>Word</th>
+                    <th>Verb</th>
                     <th>Gender</th>
-                    <th>Definiton</th>
+                    <th>Definition</th>
                     <th>Type</th>
 
                 </tr>
             </thead>
             <tbody>
-                {{#each items}}
+                {{#each items}} {{#if isVerb}}
                 <tr>
                     {{> DictionaryItem}}
                 </tr>
-                {{else}}
+                {{/if}} {{/each}} {{#each items}} {{#if isNoun}}
                 <tr>
-                    <td>No definitions yet.</td>
+                    {{> DictionaryItem}}
+                </tr>
+                {{/if}} {{/each}} {{#each items}} {{#if isAdjective}}
+                <tr>
+                    {{> DictionaryItem}}
+                </tr>
+                {{/if}} {{else}}
+                <tr>
+                    <td>No matches for your seach term.</td>
                     <td></td>
                     <td></td>
                     <td></td>
+
                 </tr>
                 {{/each}}
             </tbody>
         </table>
+
     </div>
 </template>
 
@@ -47,9 +58,15 @@
     <td>
         <b>{{word}}</b>
     </td>
+    {{#if isNoun}}
     <td>
         {{gender}}
     </td>
+    {{else}}
+    <td>
+        NA
+    </td>
+    {{/if}}
     <td>
         {{definition}}
     </td>
