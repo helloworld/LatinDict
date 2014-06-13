@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>72488C23-0974-4AE0-BA7E-460C2183A4DD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Example</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CF4C219B-BDFE-4719-84D5-3F09980F0B8F</key>
+		<string>https://github.com/AdamBrodzinski/meteor-cordova-shell.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>platforms/ios/Example.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CF4C219B-BDFE-4719-84D5-3F09980F0B8F</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/AdamBrodzinski/meteor-cordova-shell.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CF4C219B-BDFE-4719-84D5-3F09980F0B8F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CF4C219B-BDFE-4719-84D5-3F09980F0B8F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>meteor-cordova-shell</string>
+		</dict>
+	</array>
+</dict>
+</plist>
