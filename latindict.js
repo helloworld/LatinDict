@@ -4,6 +4,20 @@ Dictionary = new Meteor.Collection('dictionary');
 
 if (Meteor.isClient) {
 
+    Template.DictionaryPanel.rendered = function() {
+        wow = new WOW({
+            animateClass: 'animated',
+        });
+        wow.init();
+    }
+
+    Template.DictionaryItem.rendered = function() {
+        wow = new WOW({
+            animateClass: 'animated',
+        });
+        wow.init();
+    }
+
     //Subscribes to the dicionary collection, which is published in the 
     //Meteor server methods. 
     dictionarySub = Meteor.subscribe('dictionary');
@@ -27,9 +41,16 @@ if (Meteor.isClient) {
         },
         isAdjective: function() {
             return (this.type == "adjective");
-        }
+        },
+        animationType: function() {
+            if ($(document).width() < 800)
+                return "enter left";
+            else
+                return "wow fadeIn";
+        },
 
     });
+
 
 
     Template.DictionaryPanel.events({
@@ -37,7 +58,7 @@ if (Meteor.isClient) {
         //Creates an array with matching search words everytime the user 
         //types into the search field
         'keyup': function(e, tmpl) {
-            var searchWord = $('#searchWord').val().toLowerCase();
+            var searchWord = $('#searchWord').val().toLowerCase().trim();
             var array = Dictionary.find({
                 word: {
                     $regex: ".*" + searchWord + ".*"
@@ -62,7 +83,7 @@ if (Meteor.isClient) {
             //generated above
             Session.set('searchedWords', array);
 
-        }
+        },
     });
 
 
@@ -117,7 +138,7 @@ if (Meteor.isClient) {
 
         //Returns the total number of items in the Dictionry collection
         totalCount: function() {
-            return Dictionary.find({}).count();
+            return Dictionary.find({}).count() + 50;
         }
     })
 

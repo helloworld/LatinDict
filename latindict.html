@@ -29,26 +29,19 @@
                     </tr>
                 </thead>
                 <tbody>
-
-                    {{#each items}} {{#if isVerb}}
-                    <tr>
+                    {{#each items}}
+                    <tr class="{{animationType}}">
                         {{> DictionaryItem}}
                     </tr>
-                    {{/if}} {{/each}} {{#each items}} {{#if isNoun}}
-                    <tr>
-                        {{> DictionaryItem}}
-                    </tr>
-                    {{/if}} {{/each}} {{#each items}} {{#if isAdjective}}
-                    <tr>
-                        {{> DictionaryItem}}
-                    </tr>
-                    {{/if}} {{else}}
+                    {{else}}
                     <tr>
                         <td>No matches for your seach term.</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <div class="noshow">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </div>
 
                     </tr>
                     {{/each}}
@@ -74,16 +67,16 @@
         {{gender}}
     </td>
     {{else}}
-    <td data-title="Gender">
-        NA
+    <td data-title="Gender" class="mob">
+        &nbsp;
     </td>
     {{/if}} {{#if isVerb}}
     <td data-title="Conj">
         {{conj}}
     </td>
     {{else}}
-    <td data-title="Conj">
-        NA
+    <td data-title="Conj" class="mob">
+        &nbsp;
     </td>
     {{/if}}
 
@@ -106,9 +99,9 @@
 </template>
 
 <template name="SearchDictionaryItem">
-    <form class="search-dictionary">
-        <input type="text" id="searchWord" placeholder="Search" />
-    </form>
+    <div class="search-dictionary">
+        <input type="text" id="searchWord" placeholder="Search" autocomplete="off" />
+    </div>
 </template>
 
 <template name="DictionaryCount">
